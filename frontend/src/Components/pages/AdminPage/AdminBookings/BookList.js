@@ -104,6 +104,7 @@ const BookingList = () => {
   const showBookingDetails = (booking) => {
     setSelectedBooking(booking);
     setDrawerVisible(true);
+    console.log(booking);
   };
 
   const columns = [
@@ -116,11 +117,14 @@ const BookingList = () => {
     {
       title: "Room",
       key: "room",
-      render: (record) => (
-        <Button type="link" onClick={() => showBookingDetails(record)}>
-          {record.room_name || "Loading..."}
-        </Button>
-      ),
+      render: (record) => {
+        console.log("Record:", record); // Kiểm tra dữ liệu ở đây
+        return (
+          <Button type="link" onClick={() => showBookingDetails(record)}>
+            {record.room_name || "Loading..."}
+          </Button>
+        );
+      },
     },
     {
       title: "User",

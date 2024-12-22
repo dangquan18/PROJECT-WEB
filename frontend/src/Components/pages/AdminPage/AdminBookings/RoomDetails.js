@@ -58,13 +58,11 @@ const RoomDetails = ({ room }) => {
             <Descriptions.Item label="Capacity">
               {room.capacity} people
             </Descriptions.Item>
-            <Descriptions.Item label="Status">
-              <Tag color={room.status === "available" ? "green" : "red"}>
-                {room.status}
-              </Tag>
+            <Descriptions.Item label="Capacity">
+              {room.district_name}
             </Descriptions.Item>
             <Descriptions.Item label="Price">
-              {formatCurrency(room.price)}
+              {room.price * 1000} VNĐ/1h
             </Descriptions.Item>
           </Descriptions>
         </div>

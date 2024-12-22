@@ -76,9 +76,12 @@ const getBookingId = (roomId, userId, startTime, date, endTime) => {
 };
 const getBookingsByUser = (userId) => {
   return new Promise((resolve, reject) => {
-    // Truy vấn cơ sở dữ liệu
+    // Truy vấn cơ sở dữ liệu với JOIN để lấy tên phòng
     db.query(
-      "SELECT * FROM bookings WHERE user_id = ?",
+      `SELECT bookings.*, rooms.name
+      FROM bookings
+      JOIN rooms ON bookings.room_id = rooms.id
+      WHERE bookings.user_id = ?`,
       [userId],
       (err, results) => {
         if (err) {

@@ -107,7 +107,7 @@ const equipment = (roomId) => {
 };
 const getAllRooms = () => {
   return new Promise((resolve, reject) => {
-    const sql = "SELECT * FROM rooms"; // Query lấy tất cả các phòng
+    const sql = "SELECT * FROM rooms WHERE id = ?"; // Query to get all rooms
     db.query(sql, (err, results) => {
       if (err) {
         console.error("Error fetching rooms: ", err);

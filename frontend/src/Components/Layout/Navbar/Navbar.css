@@ -69,6 +69,7 @@
 }
 
 .logoutBtn {
+  margin-top: 5px;
   background-color: rgb(60, 124, 180); /* Bright red */
   color: white;
   border: none;

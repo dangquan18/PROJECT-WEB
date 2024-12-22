@@ -96,9 +96,12 @@ const getBookingsByUser = (req, res) => {
     .catch((error) => {
       // Nếu có lỗi trong quá trình xử lý
       console.error(error);
-      res.status(500).json({ message: "Lỗi khi lấy booking" });
+      res
+        .status(500)
+        .json({ message: "Lỗi khi lấy booking", error: error.message });
     });
 };
+
 module.exports = {
   createBookingController,
   getBookings,

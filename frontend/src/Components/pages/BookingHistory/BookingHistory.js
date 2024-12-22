@@ -70,7 +70,7 @@ const BookingHistory = () => {
       return "Đã thanh toán";
     }
     if (status === "pending") {
-      return "chưa thanh toán";
+      return "Chưa thanh toán";
     }
     if (status === "cancelled") {
       return "Đã hủy";
@@ -90,7 +90,7 @@ const BookingHistory = () => {
       key: "room",
       render: (record) => (
         <a onClick={() => showBookingDetails(record)}>
-          {`Room ${record.room_name}`}
+          {record.name || `Room ${record.room_id}`}
         </a>
       ),
     },
@@ -183,8 +183,9 @@ const BookingHistory = () => {
                   {selectedBooking.id}
                 </Descriptions.Item>
                 <Descriptions.Item label="Room">
-                  {`Room ${selectedBooking.room_id}`}{" "}
-                  {/* Có thể thay đổi để lấy tên phòng */}
+                  {roomDetails
+                    ? roomDetails.room_name
+                    : `Room ${selectedBooking.room_id}`}
                 </Descriptions.Item>
                 <Descriptions.Item label="Date">
                   {formatDate(selectedBooking.date)}
