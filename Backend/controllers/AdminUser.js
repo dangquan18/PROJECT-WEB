@@ -29,15 +29,10 @@ const getUserById = async (req, res) => {
 const createUser = async (req, res) => {
   const { name, email, password, role, phone_number } = req.body;
   try {
-    const newUserId = await userModel.createUser(
-      name,
-      email,
-      password,
-      role,
-      phone_number
-    );
-    res.status(201).json({ message: "User added successfully", id: newUserId });
+    await userModel.createUser(name, email, password, role, phone_number);
+    res.status(201).json({ message: "User added successfully" });
   } catch (err) {
+    console.error("Error adding user:", err);
     res.status(500).json({ message: "Error adding user" });
   }
 };

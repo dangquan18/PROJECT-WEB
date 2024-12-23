@@ -22,9 +22,12 @@ const createUser = (name, email, password, role, phone_number) => {
     db.query(
       "INSERT INTO users (name, email, password, role, phone_number) VALUES (?, ?, ?, ?, ?)",
       [name, email, password, role, phone_number],
-      (err, results) => {
-        if (err) reject(err);
-        resolve(results.insertId);
+      (err) => {
+        if (err) {
+          console.error("Error during query:", err);
+          return reject(err);
+        }
+        resolve(); // Thành công, không cần trả về gì thêm
       }
     );
   });

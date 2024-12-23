@@ -90,6 +90,7 @@ function AdminUser() {
           setUsers((prevUsers) => [...prevUsers, response.data]);
           notification.success({ message: "User added successfully" });
           setIsModalVisible(false);
+          fetchUsers(); // Lấy lại dữ liệu người dùng
         })
         .catch((error) =>
           notification.error({
