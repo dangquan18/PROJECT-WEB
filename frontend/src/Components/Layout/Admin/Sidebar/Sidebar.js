@@ -22,7 +22,7 @@ export default function Sidebar() {
             }`}
           >
             <Link
-              to="/admin"
+              to="/admin/dashboard"
               className={`nav-link ${
                 location.pathname === "/admin" ? "active" : ""
               }`}

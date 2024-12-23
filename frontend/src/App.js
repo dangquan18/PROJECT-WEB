@@ -13,6 +13,7 @@ import BookingList from "./Components/pages/AdminPage/AdminBookings/BookList";
 import AdminRooms from "./Components/pages/AdminPage/AdminRooms/AdminRooms";
 import AdminUser from "./Components/pages/AdminPage/AdminUser/AdminUser";
 import Home from "./Components/pages/Home/Home";
+import Dashboard from "./Components/pages/AdminPage/AdminDashBoard/DashBoard";
 function App() {
   return (
     <>
@@ -29,6 +30,7 @@ function App() {
         <Route path="/admin/bookings" element={<BookingList />} />
         <Route path="/admin/rooms" element={<AdminRooms />} />
         <Route path="/admin/users" element={<AdminUser />} />
+        <Route path="/admin/dashboard" element={<Dashboard />} />
       </Routes>
     </>
   );

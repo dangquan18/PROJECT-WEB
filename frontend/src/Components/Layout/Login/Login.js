@@ -23,7 +23,7 @@ const Login = () => {
 
       // Kiểm tra role và điều hướng
       if (res.data.user.role === "admin") {
-        navigate("/admin/users"); // Chuyển sang trang admin nếu role là admin
+        navigate("/admin/dashboard"); // Chuyển sang trang admin nếu role là admin
       } else {
         navigate("/"); // Chuyển sang trang user nếu role là user
       }

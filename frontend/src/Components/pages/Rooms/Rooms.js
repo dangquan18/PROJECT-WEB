@@ -55,9 +55,31 @@ function Rooms() {
       return false;
     }
 
+    const currentDate = new Date();
+    const selectedDate = new Date(date);
     const startDateTime = new Date(`${date}T${startTime}`);
     const endDateTime = new Date(`${date}T${endTime}`);
 
+    // Kiểm tra ngày phải >= ngày hiện tại
+    if (selectedDate < new Date(currentDate.toISOString().split("T")[0])) {
+      setError("Ngày tìm kiếm không được nhỏ hơn ngày hiện tại!");
+      return false;
+    }
+
+    // Kiểm tra thời gian bắt đầu phải >= thời gian hiện tại + 30 phút nếu ngày là hôm nay
+    const currentPlus30Minutes = new Date(
+      currentDate.getTime() + 30 * 60 * 1000
+    );
+    if (
+      selectedDate.toISOString().split("T")[0] ===
+        currentDate.toISOString().split("T")[0] &&
+      startDateTime < currentPlus30Minutes
+    ) {
+      setError("Thời gian bắt đầu phải lớn hơn hiện tại ít nhất 30 phút!");
+      return false;
+    }
+
+    // Kiểm tra thời gian kết thúc phải sau thời gian bắt đầu
     if (endDateTime <= startDateTime) {
       setError("Thời gian kết thúc phải sau thời gian bắt đầu!");
       return false;
@@ -102,7 +124,7 @@ function Rooms() {
   return (
     <>
       <Navbar />
-      <h1 className="content">Hãy tìm kiếm phòng Phù hơp với bạn</h1>
+      <h1 className="content">Hãy tìm kiếm phòng phù hợp với bạn</h1>
       <div className="search-container">
         {/* Inputs tìm kiếm phòng */}
         <div className="search-inputs">
